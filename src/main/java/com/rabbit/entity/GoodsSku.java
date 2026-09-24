@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 /**
  * 商品SKU实体
  * 成员 D 负责
+ * specs 字段与 goods.specs 严格对齐
  */
 @Data
 @TableName("goods_sku")
@@ -18,9 +19,6 @@ public class GoodsSku {
 
     /** 商品ID */
     private Long goodsId;
-
-    /** SKU编码 */
-    private String skuCode;
 
     /** 价格 */
     private BigDecimal price;
@@ -34,15 +32,9 @@ public class GoodsSku {
     /** SKU图片 */
     private String picture;
 
-    /** SKU规格JSON */
+    /** SKU规格（JSON数组，与goods.specs对齐） */
     private String specs;
 
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
-
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
-
-    @TableLogic
-    private Integer deleted;
 }
