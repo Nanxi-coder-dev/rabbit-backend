@@ -1,0 +1,22 @@
+﻿# Maven
+target/
+*.jar
+*.war
+
+# IDE
+.idea/
+*.iml
+*.iws
+.vscode/
+*.swp
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# 本地配置（如果有）
+application-local.yml
