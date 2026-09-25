@@ -1,4 +1,4 @@
-﻿# Rabbit 电商后端项目
+# Rabbit 电商后端项目
 
 桂林理工大学 Web 系统开发实习 - 小组项目后端
 
@@ -6,11 +6,12 @@
 
 | 技术 | 版本 | 说明 |
 |------|------|------|
-| Spring Boot | 2.7.18 | 核心框架 |
-| MyBatis-Plus | 3.5.5 | ORM 框架 |
-| MySQL | 5.7+ / 8.0 | 数据库 |
-| JWT (jjwt) | 0.9.1 | 身份认证 |
+| Spring Boot | 4.1.1 | 核心框架 |
+| MyBatis-Plus | 3.5.16 | ORM 框架 |
+| MySQL | 8.0 | 数据库 |
+| JWT (jjwt) | 0.12.6 | 身份认证 |
 | Lombok | - | 简化代码 |
+| JDK | 17
 | Maven | 3.6+ | 项目构建 |
 
 ## 项目结构
@@ -39,9 +40,12 @@ rabbit-backend/
 ├── src/main/resources/
 │   ├── application.yml               # 配置文件（D）
 │   ├── mapper/                       # MyBatis XML
-│   └── sql/
-│       ├── schema.sql                # 建表脚本（D）
-│       └── seed.sql                  # 种子数据（D）
+│   └── sql/                          # 按模块拆分，可独立 source
+│       ├── 01_user.sql               # 用户表（建表+数据）
+│       ├── 02_category.sql           # 分类表（建表+数据）
+│       ├── 03_goods.sql              # 商品表+SKU表（建表+数据）
+│       ├── 04_banner.sql             # 轮播图表（建表+数据）
+│       └── 05_cart.sql               # 购物车表（建表+数据）
 └── pom.xml                           # Maven 配置（D）
 ```
 
@@ -106,11 +110,11 @@ mvn spring-boot:run
 
 ### 种子数据统计
 
-- 用户：2 个
-- 分类：2 个一级 + 4 个二级
-- Banner：4 个（首页2 + 商品页2）
-- 商品：80 个（4个二级分类 × 每类20个）
-- SKU：160 个（每商品2个，specs 与 goods.specs 严格对齐）
+- 用户：2 个（admin / test，密码 123456，BCrypt 加密）
+- 分类：58 个（9 个一级 + 49 个二级，来自黑马真实接口）
+- Banner：5 个（首页 + 商品页，去重）
+- 商品：121 个（多来源合并去重，3 个有完整详情含 SKU）
+- SKU：3 个（仅 3 个商品有完整 SKU，后续补抓）
 
 ## 接口文档
 
@@ -274,7 +278,7 @@ D（数据库+骨架）──> A（Result+JWT）──> B/C/E（业务接口）
 1. **SKU 对齐**：goods.specs 和 goods_sku.specs 必须严格对齐，否则前端 SKU 选择器无法联动
 2. **分类层级**：goods.category_id 指向二级分类，二级分类的 parent_id 指向一级分类
 3. **图片 URL**：使用公开可访问的 CDN 地址，不能用本地路径
-4. **逻辑删除**：所有表都有 deleted 字段，MyBatis-Plus 已配置逻辑删除
+4. **按模块导入**：SQL 按模块拆分，可按需独立 source，执行顺序 01->05
 5. **分页**：使用 MyBatis-Plus 的 Page 对象，已配置分页插件
 6. **跨域**：已配置全局跨域，前端开发服务器可直接访问
 7. **白名单**：/goods/**、/home/**、/category/**、/login 不需要 Token
@@ -282,7 +286,7 @@ D（数据库+骨架）──> A（Result+JWT）──> B/C/E（业务接口）
 ## 联调检查清单
 
 - [ ] 数据库能正常连接，6张表创建成功
-- [ ] 种子数据导入成功（80商品 + 160SKU）
+- [ ] 种子数据导入成功（121商品 + 3SKU + 58分类）
 - [ ] 项目启动无报错，端口8080
 - [ ] /home/banner 返回至少2条数据
 - [ ] /goods?id=1 返回完整详情，specs 和 skus 对齐
