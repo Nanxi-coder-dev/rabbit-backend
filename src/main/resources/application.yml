@@ -1,9 +1,31 @@
 server:
-  port: 8080    # 后端启动端口，前端 vite.config.js 里代理的目标端口要一致
+  port: 8080
 
 spring:
   application:
-    name: vue-rabbit-server    # 应用名，日志里会显示
+    name: vue-rabbit-server
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/vue_rabbit?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+
+  jackson:
+    default-property-inclusion: non_null
+    time-zone: Asia/Shanghai
+    date-format: yyyy-MM-dd HH:mm:ss
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
 
 jwt:
   secret: rabbit-shop-jwt-secret-key-2024-very-long-string-for-hs256-algorithm

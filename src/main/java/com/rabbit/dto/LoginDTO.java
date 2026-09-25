@@ -1,13 +1,18 @@
 package com.rabbit.dto;
 
 import lombok.Data;
+import jakarta.validation.constraints.NotBlank;
 
 /**
- * 登录请求参数。
- * 对应 POST /login 的 body：{account, password}
+ * 登录请求 DTO
+ * 成员 D 负责（登录模块）
  */
 @Data
 public class LoginDTO {
+
+    @NotBlank(message = "账号不能为空")
     private String account;
+
+    @NotBlank(message = "密码不能为空")
     private String password;
 }
