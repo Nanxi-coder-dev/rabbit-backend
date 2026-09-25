@@ -1,4 +1,4 @@
-﻿package com.rabbit.controller;
+package com.rabbit.controller;
 
 import com.rabbit.common.Result;
 import com.rabbit.dto.LoginDTO;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 /**
  * 登录控制器

@@ -1,4 +1,4 @@
-﻿package com.rabbit.entity;
+package com.rabbit.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 /**
  * 商品实体
  * 成员 D 负责
- * 字段对齐小兔鲜黑马真实接口数据
+ * 字段对齐小兔鲜黑马真实接口数据 + 设计稿 _design_extract.txt
  */
 @Data
 @TableName("goods")
@@ -36,20 +36,41 @@ public class Goods {
     /** 商品图片列表（JSON数组，详情用） */
     private String mainPictures;
 
+    /** 销量 */
+    private Integer salesCount;
+
+    /** 评论数 */
+    private Integer commentCount;
+
+    /** 收藏数 */
+    private Integer collectCount;
+
+    /** 品牌名 */
+    private String brandName;
+
+    /** 详情属性（JSON数组） */
+    private String detailsProperties;
+
+    /** 详情图（JSON数组） */
+    private String detailsPictures;
+
     /** 商品规格（JSON数组） */
     private String specs;
 
-    /** 库存 */
-    private Integer inventory;
+    /** 二级分类ID */
+    private Long categoryId;
 
-    /** 销量 */
-    private Integer salesCount;
+    /** 发布时间 */
+    private LocalDateTime publishTime;
+
+    /** 是否新品：0-否，1-是 */
+    private Integer isNew;
 
     /** 排序序号 */
     private Integer orderNum;
 
-    /** 二级分类ID */
-    private Long categoryId;
+    /** 评价数 */
+    private Integer evaluateNum;
 
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
