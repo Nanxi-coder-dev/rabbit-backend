@@ -5,6 +5,7 @@ import com.rabbit.vo.GoodsSimpleVO;
 
 import java.util.List;
 
+
 public interface GoodsService {
 
     /** 商品详情 */
