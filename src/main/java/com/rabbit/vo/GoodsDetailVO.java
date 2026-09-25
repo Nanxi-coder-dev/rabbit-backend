@@ -23,11 +23,8 @@ public class GoodsDetailVO {
     private Integer collectCount;
 
     private BrandVO brand;
-
     private DetailsVO details;
-
     private List<SpecVO> specs;
-
     private List<SkuVO> skus;
 
     // ---------- 内部类 ----------
@@ -74,6 +71,7 @@ public class GoodsDetailVO {
         private BigDecimal price;
         private BigDecimal oldPrice;
         private Integer inventory;
+        private String picture;
         private List<SkuSpecVO> specs;
     }
 
