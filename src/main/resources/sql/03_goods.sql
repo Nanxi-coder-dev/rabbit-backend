@@ -52,7 +52,13 @@ CREATE TABLE goods_sku (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- goods 种子数据
-INSERT INTO goods () VALUES
+-- create_time update_time 让MySQL自动填充
+INSERT INTO goods (
+    id, name, `desc`, price, old_price, picture,
+    main_pictures, sales_count, comment_count, collect_count,
+    brand_name, details_properties, details_pictures, specs,
+    category_id, publish_time, is_new, order_num, evaluate_num
+) VALUES
 (1369155859933827074, '钻石陶瓷涂层多用锅18cm 小奶锅', '安全耐用，易于清洗', 149.00, 0, 'http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-05/6fdcac19-dd44-442c-9212-f7ec3cf3ed18.jpg', NULL, 0, 0, 0, '', '[]', '[]', NULL, 1005000, NULL, 0, 310, 0),
 (3994572, '伊海诗冬日出行多功能防风保暖围脖', '时尚针织印花面料，多种穿戴方式，正反两穿，亲肤保暖', 35.00, 0, 'https://yanxuan-item.nosdn.127.net/25effebb31ea6fc58b92f5a6aecda8b9.png', NULL, 0, 0, 0, '', '[]', '[]', NULL, 109243029, NULL, 0, 28121, 0),
 (4023839, '日本冰块冰球制冰模具', '轻轻一拍，轻松取冰', 29.80, 0, 'https://yanxuan-item.nosdn.127.net/2be38fc160992fe41f7d4a45bd0f90e5.png', NULL, 0, 0, 0, '', '[]', '[]', NULL, 1019000, NULL, 0, 14574, 0),
