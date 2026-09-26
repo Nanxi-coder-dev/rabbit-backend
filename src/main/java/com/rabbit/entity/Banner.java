@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 /**
  * 轮播图实体
  * 成员 D 负责
- * 字段对齐设计稿：imgUrl, hrefUrl, distributionSite
+ * 字段对齐设计稿: id, img_url, href_url, distribution_site
  */
 @Data
 @TableName("banner")
@@ -27,7 +27,4 @@ public class Banner {
 
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
-
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
 }

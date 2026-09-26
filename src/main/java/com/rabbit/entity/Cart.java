@@ -1,4 +1,4 @@
-﻿package com.rabbit.entity;
+package com.rabbit.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 /**
  * 购物车实体
  * 成员 D 负责
+ * 字段对齐设计稿: id, user_id, sku_id, count, selected
  */
 @Data
 @TableName("cart")
@@ -32,7 +33,4 @@ public class Cart {
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
-
-    @TableLogic
-    private Integer deleted;
 }
