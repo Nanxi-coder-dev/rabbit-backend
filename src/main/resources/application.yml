@@ -26,9 +26,9 @@ mybatis-plus:
 # JWT 配置（A 成员使用）
 jwt:
   secret: rabbit-secret-key-2026-please-change-in-production
-  expiration: 86400000
+  expire: 86400000
   header: Authorization
-  prefix: Bearer 
+  prefix: Bearer
 
 logging:
   level:
