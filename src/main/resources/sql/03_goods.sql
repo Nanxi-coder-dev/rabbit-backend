@@ -52,7 +52,7 @@ CREATE TABLE goods_sku (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- goods 种子数据
-// create_time update_time 让MySQL自动填值
+-- create_time update_time 让MySQL自动填值
 INSERT INTO goods (
     id, name, `desc`, price, old_price, picture,
     main_pictures, sales_count, comment_count, collect_count,
