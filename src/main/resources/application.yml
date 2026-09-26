@@ -23,9 +23,6 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto
-      logic-delete-field: deleted
-      logic-delete-value: 1
-      logic-not-delete-value: 0
 
 jwt:
   secret: rabbit-shop-jwt-secret-key-2024-very-long-string-for-hs256-algorithm

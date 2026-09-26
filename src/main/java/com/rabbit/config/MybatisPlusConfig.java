@@ -1,4 +1,4 @@
-package com.rabbit.config;
+﻿package com.rabbit.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;

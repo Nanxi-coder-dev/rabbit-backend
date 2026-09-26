@@ -1,4 +1,4 @@
-package com.rabbit.vo;
+﻿package com.rabbit.vo;
 
 import lombok.Data;
 

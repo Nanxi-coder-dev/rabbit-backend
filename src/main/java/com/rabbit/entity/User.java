@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 /**
  * 用户实体
  * 成员 D 负责（登录模块）
+ * 字段对齐设计稿: id, account, password, nickname, avatar
  */
 @Data
 @TableName("user")
@@ -27,21 +28,9 @@ public class User {
     /** 头像URL */
     private String avatar;
 
-    /** 手机号 */
-    private String phone;
-
-    /** 性别 0未知 1男 2女 */
-    private Integer gender;
-
-    /** 状态 0禁用 1正常 */
-    private Integer status;
-
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
-
-    @TableLogic
-    private Integer deleted;
 }
