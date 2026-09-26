@@ -1,10 +1,36 @@
 server:
-  port: 8080    # 后端启动端口，前端 vite.config.js 里代理的目标端口要一致
+  port: 8080
 
 spring:
   application:
-    name: vue-rabbit-server    # 应用名，日志里会显示
+    name: rabbit-backend
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/rabbit?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
 
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.rabbit.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+
+# JWT 配置（A 成员使用）
 jwt:
-  secret: rabbit-shop-jwt-secret-key-2024-very-long-string-for-hs256-algorithm
-  expire: 604800000
+  secret: rabbit-secret-key-2026-please-change-in-production
+  expiration: 86400000
+  header: Authorization
+  prefix: Bearer 
+
+logging:
+  level:
+    com.rabbit: debug
+    org.springframework.web: info
