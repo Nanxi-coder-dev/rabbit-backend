@@ -12,7 +12,6 @@ import com.rabbit.mapper.GoodsMapper;
 import com.rabbit.mapper.GoodsSkuMapper;
 import com.rabbit.service.GoodsService;
 import com.rabbit.vo.GoodsDetailVO;
-import com.rabbit.vo.GoodsSimpleVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -123,40 +122,6 @@ public class GoodsServiceImpl implements GoodsService {
             vo.setPicture(sku.getPicture());
             vo.setSpecs(parseJson(sku.getSpecs(),
                     new TypeReference<List<GoodsDetailVO.SkuSpecVO>>() {}));
-            return vo;
-        }).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<GoodsSimpleVO> getHotGoods(Long id, Integer type, Integer limit) {
-        List<Goods> list = goodsMapper.selectList(
-                new LambdaQueryWrapper<Goods>()
-                        .ne(id != null, Goods::getId, id)
-                        .orderByDesc(Goods::getSalesCount)
-                        .last("LIMIT " + (limit == null ? 3 : limit))
-        );
-        return toSimpleVOList(list);
-    }
-
-    @Override
-    public List<GoodsSimpleVO> getRelevant(Integer limit) {
-        List<Goods> list = goodsMapper.selectList(
-                new LambdaQueryWrapper<Goods>()
-                        .orderByDesc(Goods::getSalesCount)
-                        .last("LIMIT " + (limit == null ? 4 : limit))
-        );
-        return toSimpleVOList(list);
-    }
-
-    private List<GoodsSimpleVO> toSimpleVOList(List<Goods> list) {
-        return list.stream().map(g -> {
-            GoodsSimpleVO vo = new GoodsSimpleVO();
-            vo.setId(g.getId());
-            vo.setName(g.getName());
-            vo.setDesc(g.getDesc());
-            vo.setPrice(g.getPrice());
-            List<String> pics = parseJson(g.getMainPictures(), new TypeReference<List<String>>() {});
-            vo.setPicture(pics.isEmpty() ? g.getPicture() : pics.get(0));
             return vo;
         }).collect(Collectors.toList());
     }
