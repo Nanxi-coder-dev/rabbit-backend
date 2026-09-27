@@ -1,4 +1,4 @@
-﻿package com.rabbit.mapper;
+package com.rabbit.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.rabbit.entity.GoodsSku;
