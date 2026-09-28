@@ -61,7 +61,7 @@ public class HomeCategoryController {
      * 首页分类导航
      * （注意：此为B成员部分，A成员越界已删）
      */
-    @GetMapping("/category/head")
+    @GetMapping("/home/category/head")
     public Result<List<HomeCategoryHeadVO>> categoryHead() {
         return Result.success(homeService.getCategoryHead());
     }
