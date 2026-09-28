@@ -31,3 +31,15 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Postman 插件
+.postman/
+postman/
+
+# IDEA 临时文件
+Untitled-*
+h
+
+# 系统
+.DS_Store
+Thumbs.db

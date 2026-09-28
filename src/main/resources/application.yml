@@ -1,5 +1,5 @@
 server:
-  port: 8080    # 后端启动端口，前端 vite.config.js 里代理的目标端口要一致
+  port: 8080
 
 spring:
   application:
