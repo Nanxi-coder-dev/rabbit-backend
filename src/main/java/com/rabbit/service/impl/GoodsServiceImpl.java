@@ -2,6 +2,7 @@ package com.rabbit.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rabbit.common.BizException;
 import com.rabbit.entity.Category;
@@ -27,8 +28,8 @@ public class GoodsServiceImpl implements GoodsService {
     private final GoodsMapper goodsMapper;
     private final GoodsSkuMapper goodsSkuMapper;
     private final CategoryMapper categoryMapper;
-    private static final ObjectMapper objectMapper = new ObjectMapper();
-
+    private static final ObjectMapper objectMapper = new ObjectMapper()
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     @Override
     public GoodsDetailVO getDetail(Long id) {
         Goods goods = goodsMapper.selectById(id);
@@ -96,6 +97,15 @@ public class GoodsServiceImpl implements GoodsService {
                 list.add(c1);
             }
         }
+
+        // 如果只有二级分类，补一个空的一级分类，保证数组有 2 个元素
+        if (list.size() < 2) {
+            GoodsDetailVO.CategoryVO empty = new GoodsDetailVO.CategoryVO();
+            empty.setId(0L);
+            empty.setName("");
+            list.add(empty);
+        }
+
         return list;
     }
 
