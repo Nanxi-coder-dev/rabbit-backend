@@ -71,6 +71,12 @@
 			<artifactId>mybatis-plus-spring-boot4-starter</artifactId>
 			<version>3.5.16</version>
 		</dependency>
+		<!-- 补充 mybatis-plus-jsqlparser 依赖 -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-jsqlparser</artifactId>
+			<version>3.5.16</version>
+		</dependency>
 
 		<!-- MySQL 驱动 -->
 		<dependency>
