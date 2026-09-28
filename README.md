@@ -130,7 +130,7 @@ mvn spring-boot:run
 
 ### 接口列表
 
-#### A 成员 - 用户与购物车
+#### 用户与购物车
 
 | 方法 | 路径 | 说明 | 鉴权 |
 |------|------|------|------|
@@ -165,7 +165,7 @@ mvn spring-boot:run
 }
 ```
 
-#### B 成员 - 首页
+#### 首页
 
 | 方法 | 路径 | 说明 | 鉴权 |
 |------|------|------|------|
@@ -178,7 +178,7 @@ mvn spring-boot:run
 **轮播图参数：**
 - `distributionSite`: 1=首页（默认），2=商品页
 
-#### C 成员 - 分类与商品列表
+#### 分类与商品列表
 
 | 方法 | 路径 | 说明 | 鉴权 |
 |------|------|------|------|
@@ -198,7 +198,7 @@ mvn spring-boot:run
 ```
 - `sortField`: publishTime（最新）/ orderNum（销量）/ evaluateNum（评价）
 
-#### E 成员 - 商品详情
+#### 商品详情
 
 | 方法 | 路径 | 说明 | 鉴权 |
 |------|------|------|------|
@@ -251,13 +251,14 @@ mvn spring-boot:run
 
 ## 成员分工
 
+
 | 成员 | 负责模块 | 接口 |
 |------|----------|------|
-| A | 基础架构 + 用户 + 购物车 | Result、JWT、拦截器、/login、/member/cart/** |
+| A | 基础架构 + 用户 + 分类 | Result、JWT、拦截器、/login、/member/cart/**、/category、/category/sub/filter |
 | B | 首页 | /home/banner、/home/new、/home/hot、/home/goods、/home/category/head |
-| C | 分类 + 商品列表 | /category、/category/sub/filter、/category/goods/temporary |
-| D | 数据库 + 骨架 + 配置 + 联调 | 6张表、seed.sql、pom.xml、application.yml、分页配置 |
-| E | 商品详情 | /goods、/goods/hot、/goods/relevant |
+| C | 商品列表 + 热榜 + 推荐 | /category/goods/temporary、/goods/hot、/goods/relevant |
+| D | 数据库 + 骨架 + 配置 + 联调 | 6张表、seed.sql、pom.xml、application.yml|
+| E | 商品详情 | /goods |
 
 ## 依赖关系
 
